@@ -35,7 +35,7 @@ class H1v2Rewards(RewardsCfg):
         weight=0.25,
         params={
             "command_name": "base_velocity",
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_pitch_link"),
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
             "threshold": 0.4,
         },
     )
@@ -43,8 +43,8 @@ class H1v2Rewards(RewardsCfg):
         func=mdp.feet_slide,
         weight=-0.25,
         params={
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_pitch_link"),
-            "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_pitch_link"),
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
+            "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_roll_link"),
         },
     )
     # Penalize ankle joint limits
@@ -75,9 +75,9 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         # post init of parent
         super().__post_init__()
         # Scene
-        self.scene.robot = H1v2_MINIMAL_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
-        if self.scene.height_scanner:
-            self.scene.height_scanner.prim_path = "{ENV_REGEX_NS}/Robot/torso_link"
+        #self.scene.robot = H1v2_MINIMAL_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
+        #if self.scene.height_scanner:
+        #    self.scene.height_scanner.prim_path = "{ENV_REGEX_NS}/Robot/torso_link"
 
         # Randomization
         self.events.push_robot = None
@@ -97,7 +97,13 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         }
 
         # Terminations
-        self.terminations.base_contact.params["sensor_cfg"].body_names = [".*torso_link"]
+        self.terminations.base_contact.params["sensor_cfg"].body_names = [
+            ".*torso_link",
+            "pelvis",
+            ".*wrist_yaw_link",
+            ".*wrist_roll_link",
+            ".*wrist_pitch_link",
+        ]
 
         # Rewards
         self.rewards.undesired_contacts = None
@@ -112,8 +118,13 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.commands.base_velocity.ranges.ang_vel_z = (-1.0, 1.0)
 
         # terminations
-        self.terminations.base_contact.params["sensor_cfg"].body_names = ".*torso_link"
-
+        self.terminations.base_contact.params["sensor_cfg"].body_names = [
+            ".*torso_link",
+            "pelvis",
+            ".*wrist_yaw_link",
+            ".*wrist_roll_link",
+            ".*wrist_pitch_link",
+        ]
 
 @configclass
 class H1v2RoughEnvCfg_PLAY(H1v2RoughEnvCfg):
