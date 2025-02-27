@@ -271,7 +271,7 @@ This configuration removes most collision meshes to speed up simulation.
 
 H1v2_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
-        usd_path=f"~/IsaaclabExtension/IsaaclabExtensionH1/exts/ext_template/ext_template/assets/Robots/unitree/h1-v2_description/usd/h1_2_ros_noHands.usd",
+        usd_path=f"/home/atrovatell/IsaaclabExtension/IsaaclabExtensionH1/exts/ext_template/ext_template/assets/Robots/unitree/h1-v2_description/usd/h1_2_ros_noHands.usd",
         activate_contact_sensors=True,
         rigid_props=sim_utils.RigidBodyPropertiesCfg(
             disable_gravity=False,
