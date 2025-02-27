@@ -35,7 +35,7 @@ class H1v2Rewards(RewardsCfg):
         weight=0.25,
         params={
             "command_name": "base_velocity",
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_link"),
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_pitch_link"),
             "threshold": 0.4,
         },
     )
@@ -43,8 +43,8 @@ class H1v2Rewards(RewardsCfg):
         func=mdp.feet_slide,
         weight=-0.25,
         params={
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_link"),
-            "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_link"),
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_pitch_link"),
+            "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_pitch_link"),
         },
     )
     # Penalize ankle joint limits
