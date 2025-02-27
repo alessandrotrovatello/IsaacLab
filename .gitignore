@@ -35,9 +35,9 @@ docker/.container.cfg
 !.vscode
 
 # Outputs
-**/output/*
-**/outputs/*
-**/videos/*
+#**/output/*
+#**/outputs/*
+#**/videos/*
 **/wandb/*
 **/.neptune/*
 docker/artifacts/
@@ -54,9 +54,9 @@ _build
 .lastformat
 
 # RL-Games
-**/runs/*
-**/logs/*
-**/recordings/*
+#**/runs/*
+#**/logs/*
+#**/recordings/*
 
 # Pre-Trained Checkpoints
-/.pretrained_checkpoints/
+#/.pretrained_checkpoints/
