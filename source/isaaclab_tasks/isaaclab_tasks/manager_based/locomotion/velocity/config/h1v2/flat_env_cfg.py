@@ -26,7 +26,7 @@ class H1v2FlatEnvCfg(H1v2RoughEnvCfg):
         self.rewards.feet_air_time.params["threshold"] = 0.6
 
 
-class H1v2FlatEnvCfg_PLAY(H1FlatEnvCfg):
+class H1v2FlatEnvCfg_PLAY(H1v2FlatEnvCfg):
     def __post_init__(self) -> None:
         # post init of parent
         super().__post_init__()
