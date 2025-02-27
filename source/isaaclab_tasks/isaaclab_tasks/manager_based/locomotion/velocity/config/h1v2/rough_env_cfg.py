@@ -75,9 +75,9 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         # post init of parent
         super().__post_init__()
         # Scene
-        #self.scene.robot = H1v2_MINIMAL_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
-        #if self.scene.height_scanner:
-        #    self.scene.height_scanner.prim_path = "{ENV_REGEX_NS}/Robot/torso_link"
+        self.scene.robot = H1v2_MINIMAL_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
+        if self.scene.height_scanner:
+            self.scene.height_scanner.prim_path = "{ENV_REGEX_NS}/Robot/torso_link"
 
         # Randomization
         self.events.push_robot = None
