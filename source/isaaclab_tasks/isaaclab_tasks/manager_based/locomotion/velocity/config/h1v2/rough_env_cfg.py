@@ -47,7 +47,7 @@ class H1v2Rewards(RewardsCfg):
     #         "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_roll_link"),
     #     },
     #)
-     Penalize ankle joint limits
+     # Penalize ankle joint limits
      dof_pos_limits = RewTerm(
          func=mdp.joint_pos_limits, weight=-1.0, params={"asset_cfg": SceneEntityCfg("robot", joint_names=".*_ankle_roll_joint")}
      )
