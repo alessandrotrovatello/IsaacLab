@@ -24,15 +24,15 @@ class H1v2Rewards(RewardsCfg):
     lin_vel_z_l2 = None
     track_lin_vel_xy_exp = RewTerm(
         func=mdp.track_lin_vel_xy_yaw_frame_exp,
-        weight=1.0,
+        weight=5.0,
         params={"command_name": "base_velocity", "std": 0.5},
     )
     track_ang_vel_z_exp = RewTerm(
-        func=mdp.track_ang_vel_z_world_exp, weight=1.0, params={"command_name": "base_velocity", "std": 0.5}
+        func=mdp.track_ang_vel_z_world_exp, weight=0.8, params={"command_name": "base_velocity", "std": 0.5}
     )
     feet_air_time = RewTerm(
         func=mdp.feet_air_time_positive_biped,
-        weight=0.25,
+        weight=0.5,
         params={
             "command_name": "base_velocity",
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
@@ -41,7 +41,7 @@ class H1v2Rewards(RewardsCfg):
     )
     feet_slide = RewTerm(
         func=mdp.feet_slide,
-        weight=-0.25,
+        weight=-0.1,
         params={
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
             "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_roll_link"),
@@ -49,7 +49,7 @@ class H1v2Rewards(RewardsCfg):
     )
     # Penalize ankle joint limits
     dof_pos_limits = RewTerm(
-        func=mdp.joint_pos_limits, weight=-1.0, params={"asset_cfg": SceneEntityCfg("robot", joint_names=".*_ankle_.*")}
+        func=mdp.joint_pos_limits, weight=-1.0, params={"asset_cfg": SceneEntityCfg("robot", joint_names=".*_ankle_roll_joint")}
     )
     # Penalize deviation from default of the joints that are not essential for locomotion
     joint_deviation_hip = RewTerm(
@@ -101,7 +101,7 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
             ".*_hip_yaw_link",
             ".*_hip_roll_link",
             ".*_hip_pitch_link",
-            ".*_knee_link",
+            #".*_knee_link",
             "torso_link",
             "pelvis",
             ".*_shoulder_pitch_link",
@@ -126,23 +126,6 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.commands.base_velocity.ranges.lin_vel_x = (0.0, 1.0)
         self.commands.base_velocity.ranges.lin_vel_y = (0.0, 0.0)
         self.commands.base_velocity.ranges.ang_vel_z = (-1.0, 1.0)
-
-        # Terminations
-        self.terminations.base_contact.params["sensor_cfg"].body_names = [
-            ".*_hip_yaw_link",
-            ".*_hip_roll_link",
-            ".*_hip_pitch_link",
-            ".*_knee_link",
-            "torso_link",
-            "pelvis",
-            ".*_shoulder_pitch_link",
-            ".*_shoulder_roll_link",
-            ".*_shoulder_yaw_link",
-            ".*_elbow_link",
-            ".*_wrist_yaw_link",
-            ".*_wrist_roll_link",
-            ".*_wrist_pitch_link",
-        ]
 
 @configclass
 class H1v2RoughEnvCfg_PLAY(H1v2RoughEnvCfg):
