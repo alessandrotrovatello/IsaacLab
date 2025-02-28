@@ -39,13 +39,13 @@ class H1v2Rewards(RewardsCfg):
             "threshold": 0.4,
         },
     )
-     feet_slide = RewTerm(
-         func=mdp.feet_slide,
-         weight=-0.25,
-         params={
-             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
-             "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_roll_link"),
-         },
+    feet_slide = RewTerm(
+        func=mdp.feet_slide,
+        weight=-0.25,
+        params={
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
+            "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_roll_link"),
+        },
     )
     # Penalize ankle joint limits
     dof_pos_limits = RewTerm(
