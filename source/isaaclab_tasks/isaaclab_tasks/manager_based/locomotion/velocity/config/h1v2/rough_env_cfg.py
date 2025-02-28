@@ -20,7 +20,7 @@ from isaaclab_assets import H1v2_MINIMAL_CFG  # isort: skip
 class H1v2Rewards(RewardsCfg):
     """Reward terms for the MDP."""
 
-    termination_penalty = RewTerm(func=mdp.is_terminated, weight=-50.0)
+    termination_penalty = RewTerm(func=mdp.is_terminated, weight=-300.0)
     lin_vel_z_l2 = None
     track_lin_vel_xy_exp = RewTerm(
         func=mdp.track_lin_vel_xy_yaw_frame_exp,
@@ -116,7 +116,7 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         # Rewards
         self.rewards.undesired_contacts = None #None
         self.rewards.flat_orientation_l2.weight = -1.0 #-1.0
-        self.rewards.dof_torques_l2.weight = -0.5 #0.0 
+        self.rewards.dof_torques_l2.weight = 0.0 #0.0 
         self.rewards.action_rate_l2.weight = -0.005 #-0.005
         self.rewards.dof_acc_l2.weight = -1.25e-7 #-1.25e-7
         #self.rewards.track_lin_vel_xy_exp.weight = 1.0
