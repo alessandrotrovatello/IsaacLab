@@ -98,32 +98,52 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
 
         # Terminations
         self.terminations.base_contact.params["sensor_cfg"].body_names = [
-            ".*torso_link",
+            ".*_hip_yaw_link",
+            ".*_hip_roll_link",
+            ".*_hip_pitch_link",
+            ".*_knee_link",
+            ".*_ankle_pitch_link",
+            "torso_link",
             "pelvis",
-            ".*wrist_yaw_link",
-            ".*wrist_roll_link",
-            ".*wrist_pitch_link",
+            ".*_shoulder_pitch_link",
+            ".*_shoulder_roll_link",
+            ".*_shoulder_yaw_link",
+            ".*_elbow_link",
+            ".*_wrist_yaw_link",
+            ".*_wrist_roll_link",
+            ".*_wrist_pitch_link",
         ]
 
         # Rewards
-        self.rewards.undesired_contacts = None
-        self.rewards.flat_orientation_l2.weight = -1.0
-        self.rewards.dof_torques_l2.weight = 0.0
-        self.rewards.action_rate_l2.weight = -0.005
-        self.rewards.dof_acc_l2.weight = -1.25e-7
+        self.rewards.undesired_contacts = RewardsCfg(weight=-1.0) #None
+        self.rewards.flat_orientation_l2.weight = -0.2 #-1.0
+        self.rewards.dof_torques_l2.weight = -0.01 #0.0 
+        self.rewards.action_rate_l2.weight = -0.005 #-0.005
+        self.rewards.dof_acc_l2.weight = -1.25e-7 #-1.25e-7
+
+        self.rewards.forward_progress = RewardsCfg(weight=1.0)
 
         # Commands
         self.commands.base_velocity.ranges.lin_vel_x = (0.0, 1.0)
         self.commands.base_velocity.ranges.lin_vel_y = (0.0, 0.0)
         self.commands.base_velocity.ranges.ang_vel_z = (-1.0, 1.0)
 
-        # terminations
+        # Terminations
         self.terminations.base_contact.params["sensor_cfg"].body_names = [
-            ".*torso_link",
+            ".*_hip_yaw_link",
+            ".*_hip_roll_link",
+            ".*_hip_pitch_link",
+            ".*_knee_link",
+            ".*_ankle_pitch_link",
+            "torso_link",
             "pelvis",
-            ".*wrist_yaw_link",
-            ".*wrist_roll_link",
-            ".*wrist_pitch_link",
+            ".*_shoulder_pitch_link",
+            ".*_shoulder_roll_link",
+            ".*_shoulder_yaw_link",
+            ".*_elbow_link",
+            ".*_wrist_yaw_link",
+            ".*_wrist_roll_link",
+            ".*_wrist_pitch_link",
         ]
 
 @configclass
