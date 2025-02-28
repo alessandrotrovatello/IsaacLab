@@ -24,7 +24,7 @@ class H1v2Rewards(RewardsCfg):
     lin_vel_z_l2 = None
     track_lin_vel_xy_exp = RewTerm(
         func=mdp.track_lin_vel_xy_yaw_frame_exp,
-        weight=2.5,
+        weight=1.0,
         params={"command_name": "base_velocity", "std": 0.5},
     )
     track_ang_vel_z_exp = RewTerm(
@@ -32,7 +32,7 @@ class H1v2Rewards(RewardsCfg):
     )
     feet_air_time = RewTerm(
         func=mdp.feet_air_time_positive_biped,
-        weight=1.0,
+        weight=0.25,
         params={
             "command_name": "base_velocity",
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
@@ -41,7 +41,7 @@ class H1v2Rewards(RewardsCfg):
     )
     feet_slide = RewTerm(
         func=mdp.feet_slide,
-        weight=-0.5,
+        weight=-0.25,
         params={
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
             "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_roll_link"),
@@ -114,13 +114,13 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         ]
 
         # Rewards
-        self.rewards.undesired_contacts.weight = -1.0 #None
-        self.rewards.flat_orientation_l2.weight = -0.2 #-1.0
+        self.rewards.undesired_contacts.weight = None #None
+        self.rewards.flat_orientation_l2.weight = -1.0 #-1.0
         self.rewards.dof_torques_l2.weight = -0.01 #0.0 
         self.rewards.action_rate_l2.weight = -0.005 #-0.005
         self.rewards.dof_acc_l2.weight = -1.25e-7 #-1.25e-7
-        self.rewards.track_lin_vel_xy_exp.weight = 1.0
-        self.rewards.track_ang_vel_z_exp.weight = 0.5
+        #self.rewards.track_lin_vel_xy_exp.weight = 1.0
+        #self.rewards.track_ang_vel_z_exp.weight = 0.5
 
         # Commands
         self.commands.base_velocity.ranges.lin_vel_x = (0.0, 1.0)
