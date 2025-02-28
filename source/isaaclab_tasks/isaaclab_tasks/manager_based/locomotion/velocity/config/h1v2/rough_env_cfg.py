@@ -121,8 +121,6 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.rewards.action_rate_l2.weight = -0.005 #-0.005
         self.rewards.dof_acc_l2.weight = -1.25e-7 #-1.25e-7
 
-        self.rewards.forward_progress.weight = 1.0
-
         # Commands
         self.commands.base_velocity.ranges.lin_vel_x = (0.0, 1.0)
         self.commands.base_velocity.ranges.lin_vel_y = (0.0, 0.0)
