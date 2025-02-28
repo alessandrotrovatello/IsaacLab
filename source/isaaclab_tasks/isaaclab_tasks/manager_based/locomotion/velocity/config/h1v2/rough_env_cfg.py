@@ -47,24 +47,24 @@ class H1v2Rewards(RewardsCfg):
     #         "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_roll_link"),
     #     },
     #)
-     # Penalize ankle joint limits
-     dof_pos_limits = RewTerm(
-         func=mdp.joint_pos_limits, weight=-1.0, params={"asset_cfg": SceneEntityCfg("robot", joint_names=".*_ankle_roll_joint")}
-     )
-     # Penalize deviation from default of the joints that are not essential for locomotion
-     joint_deviation_hip = RewTerm(
-         func=mdp.joint_deviation_l1,
-         weight=-0.2,
-         params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_hip_yaw_joint", ".*_hip_roll_joint"])},
-     )
-     joint_deviation_arms = RewTerm(
-         func=mdp.joint_deviation_l1,
-         weight=-0.2,
-         params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_shoulder_.*_joint", ".*_elbow_joint"])},
-     )
-     joint_deviation_torso = RewTerm(
-         func=mdp.joint_deviation_l1, weight=-0.1, params={"asset_cfg": SceneEntityCfg("robot", joint_names="torso_joint")}
-     )
+    # Penalize ankle joint limits
+    dof_pos_limits = RewTerm(
+        func=mdp.joint_pos_limits, weight=-1.0, params={"asset_cfg": SceneEntityCfg("robot", joint_names=".*_ankle_roll_joint")}
+    )
+    # Penalize deviation from default of the joints that are not essential for locomotion
+    joint_deviation_hip = RewTerm(
+        func=mdp.joint_deviation_l1,
+        weight=-0.2,
+        params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_hip_yaw_joint", ".*_hip_roll_joint"])},
+    )
+    joint_deviation_arms = RewTerm(
+        func=mdp.joint_deviation_l1,
+        weight=-0.2,
+        params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_shoulder_.*_joint", ".*_elbow_joint"])},
+    )
+    joint_deviation_torso = RewTerm(
+        func=mdp.joint_deviation_l1, weight=-0.1, params={"asset_cfg": SceneEntityCfg("robot", joint_names="torso_joint")}
+    )
 
 
 @configclass
