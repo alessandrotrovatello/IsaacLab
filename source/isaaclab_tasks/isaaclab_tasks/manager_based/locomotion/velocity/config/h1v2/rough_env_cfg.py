@@ -119,6 +119,8 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.rewards.dof_torques_l2.weight = -0.01 #0.0 
         self.rewards.action_rate_l2.weight = -0.005 #-0.005
         self.rewards.dof_acc_l2.weight = -1.25e-7 #-1.25e-7
+        self.rewards.track_lin_vel_xy_exp.weight = 1.0
+        self.rewards.track_ang_vel_z_exp.weight = 0.5
 
         # Commands
         self.commands.base_velocity.ranges.lin_vel_x = (0.0, 1.0)
