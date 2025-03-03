@@ -20,7 +20,7 @@ from isaaclab_assets import H1v2_MINIMAL_CFG  # isort: skip
 class H1v2Rewards(RewardsCfg):
     """Reward terms for the MDP."""
 
-    termination_penalty = RewTerm(func=mdp.is_terminated, weight=-300.0)
+    termination_penalty = RewTerm(func=mdp.is_terminated, weight=-200.0)
     lin_vel_z_l2 = None
     track_lin_vel_xy_exp = RewTerm(
         func=mdp.track_lin_vel_xy_yaw_frame_exp,
@@ -36,12 +36,12 @@ class H1v2Rewards(RewardsCfg):
         params={
             "command_name": "base_velocity",
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
-            "threshold": 0.8,
+            "threshold": 0.4,
         },
     )
     feet_slide = RewTerm(
         func=mdp.feet_slide,
-        weight=-0.25,
+        weight=-0.5, #-0.25
         params={
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
             "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_roll_link"),
@@ -57,11 +57,11 @@ class H1v2Rewards(RewardsCfg):
         weight=-0.2,
         params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_hip_yaw_joint", ".*_hip_roll_joint"])},
     )
-    # joint_deviation_arms = RewTerm(
-    #     func=mdp.joint_deviation_l1,
-    #     weight=-0.2,
-    #     params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_shoulder_.*_joint", ".*_elbow_joint", ".*_wrist_.*_joint"])}, # wrist added
-    # )
+    joint_deviation_arms = RewTerm(
+        func=mdp.joint_deviation_l1,
+        weight=-0.3, # -0.2
+        params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_shoulder_.*_joint", ".*_elbow_joint", ".*_wrist_.*_joint"])}, # wrist added
+    )
     joint_deviation_torso = RewTerm(
         func=mdp.joint_deviation_l1, weight=-0.1, params={"asset_cfg": SceneEntityCfg("robot", joint_names="torso_joint")}
     )
@@ -104,13 +104,13 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
             ".*_knee_link",
             "torso_link",
             "pelvis",
-            # ".*_shoulder_pitch_link",
-            # ".*_shoulder_roll_link",
-            # ".*_shoulder_yaw_link",
-            # ".*_elbow_link",
-            # ".*_wrist_yaw_link",
-            # ".*_wrist_roll_link",
-            # ".*_wrist_pitch_link",
+            ".*_shoulder_pitch_link",
+            ".*_shoulder_roll_link",
+            ".*_shoulder_yaw_link",
+            ".*_elbow_link",
+            ".*_wrist_yaw_link",
+            ".*_wrist_roll_link",
+            ".*_wrist_pitch_link",
         ]
 
         # Rewards

@@ -296,13 +296,13 @@ H1v2_CFG = ArticulationCfg(
             ".*_ankle_pitch_joint": 0.0,  # -30 degrees
             ".*_ankle_roll_joint": 0.0,
             "torso_joint": 0.0,
-            #".*_shoulder_pitch_joint": 0.0,
-            #".*_shoulder_roll_joint": 0.0,
-            #".*_shoulder_yaw_joint": 0.0,
-            #".*_elbow_joint": 0.0,
-            #".*_wrist_yaw_joint": 0.0,
-            #".*_wrist_roll_joint": 0.0,
-            #".*_wrist_pitch_joint": 0.0,
+            ".*_shoulder_pitch_joint": 0.0,
+            ".*_shoulder_roll_joint": 0.0,
+            ".*_shoulder_yaw_joint": 0.0,
+            ".*_elbow_joint": 0.0,
+            ".*_wrist_yaw_joint": 0.0,
+            ".*_wrist_roll_joint": 0.0,
+            ".*_wrist_pitch_joint": 0.0,
 
         },
         joint_vel={".*": 0.0},
@@ -314,18 +314,18 @@ H1v2_CFG = ArticulationCfg(
             effort_limit=300,
             velocity_limit=100.0,
             stiffness={
-                ".*_hip_yaw_joint": 150.0,
-                ".*_hip_roll_joint": 150.0,
-                ".*_hip_pitch_joint": 150.0, #200
-                ".*_knee_joint": 150.0, #200
-                "torso_joint": 200.0,
+                ".*_hip_yaw_joint": 250.0, #150
+                ".*_hip_roll_joint": 70.0, #150
+                ".*_hip_pitch_joint": 50.0, #200
+                ".*_knee_joint": 150.0, #200 
+                "torso_joint": 42.55.0, #200
             },
             damping={
-                ".*_hip_yaw_joint": 5.0,
-                ".*_hip_roll_joint": 5.0,
-                ".*_hip_pitch_joint": 5.0,
-                ".*_knee_joint": 5.0,
-                "torso_joint": 5.0,
+                ".*_hip_yaw_joint": 12.0, # all 5.0
+                ".*_hip_roll_joint": 12.0,
+                ".*_hip_pitch_joint": 12.0,
+                ".*_knee_joint": 25.0,
+                "torso_joint": 8.7,
             },
         ),
         "feet": ImplicitActuatorCfg(
@@ -333,37 +333,37 @@ H1v2_CFG = ArticulationCfg(
             effort_limit=100,
             velocity_limit=100.0,
             stiffness={
-                ".*_ankle_pitch_joint": 20.0,
-                ".*_ankle_roll_joint": 20.0,
+                ".*_ankle_pitch_joint": 50.0, # all 20.0
+                ".*_ankle_roll_joint": 80.0,
             },
             damping={
-                ".*_ankle_pitch_joint": 4.0,
-                ".*_ankle_roll_joint": 4.0,
+                ".*_ankle_pitch_joint": 8.0, # all 4.0
+                ".*_ankle_roll_joint": 5.0, 
             },
         ),
-        # "arms": ImplicitActuatorCfg(
-        #     joint_names_expr=[".*_shoulder_pitch_joint", ".*_shoulder_roll_joint", ".*_shoulder_yaw_joint", ".*_elbow_joint", ".*_wrist_yaw_joint", ".*_wrist_roll_joint", ".*_wrist_pitch_joint"],
-        #     effort_limit=300,
-        #     velocity_limit=100.0,
-        #     stiffness={
-        #         ".*_shoulder_pitch_joint": 40.0,
-        #         ".*_shoulder_roll_joint": 40.0,
-        #         ".*_shoulder_yaw_joint": 40.0,
-        #         ".*_elbow_joint": 40.0,
-        #         ".*_wrist_yaw_joint": 40.0,
-        #         ".*_wrist_roll_joint": 40.0,
-        #         ".*_wrist_pitch_joint": 40.0,
-        #     },
-        #     damping={
-        #         ".*_shoulder_pitch_joint": 10.0,
-        #         ".*_shoulder_roll_joint": 10.0,
-        #         ".*_shoulder_yaw_joint": 10.0,
-        #         ".*_elbow_joint": 10.0,
-        #         ".*_wrist_yaw_joint": 10.0,
-        #         ".*_wrist_roll_joint": 10.0,
-        #         ".*_wrist_pitch_joint": 10.0,
-        #     },
-        #),
+        "arms": ImplicitActuatorCfg(
+            joint_names_expr=[".*_shoulder_pitch_joint", ".*_shoulder_roll_joint", ".*_shoulder_yaw_joint", ".*_elbow_joint", ".*_wrist_yaw_joint", ".*_wrist_roll_joint", ".*_wrist_pitch_joint"],
+            effort_limit=300,
+            velocity_limit=100.0,
+            stiffness={
+                ".*_shoulder_pitch_joint": 8.49, # all 40.0
+                ".*_shoulder_roll_joint": 10.58,
+                ".*_shoulder_yaw_joint": 3.17,
+                ".*_elbow_joint": 4.36,
+                ".*_wrist_yaw_joint": 7.48,
+                ".*_wrist_roll_joint": 3.30,
+                ".*_wrist_pitch_joint": 20.54,
+            },
+            damping={
+                ".*_shoulder_pitch_joint": 4.44, # all 10.0
+                ".*_shoulder_roll_joint": 4.44,
+                ".*_shoulder_yaw_joint": 0.9,
+                ".*_elbow_joint": 0.9,
+                ".*_wrist_yaw_joint": 0.605,
+                ".*_wrist_roll_joint": 0.605,
+                ".*_wrist_pitch_joint": 0.605,
+            },
+        ),
     },
 )
 """Configuration for the Unitree H1 Humanoid robot."""
