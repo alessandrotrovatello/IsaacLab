@@ -57,11 +57,11 @@ class H1v2Rewards(RewardsCfg):
         weight=-0.2,
         params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_hip_yaw_joint", ".*_hip_roll_joint"])},
     )
-    joint_deviation_arms = RewTerm(
-        func=mdp.joint_deviation_l1,
-        weight=-0.2,
-        params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_shoulder_.*_joint", ".*_elbow_joint", ".*_wrist_.*_joint"])}, # wrist added
-    )
+    # joint_deviation_arms = RewTerm(
+    #     func=mdp.joint_deviation_l1,
+    #     weight=-0.2,
+    #     params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_shoulder_.*_joint", ".*_elbow_joint", ".*_wrist_.*_joint"])}, # wrist added
+    # )
     joint_deviation_torso = RewTerm(
         func=mdp.joint_deviation_l1, weight=-0.1, params={"asset_cfg": SceneEntityCfg("robot", joint_names="torso_joint")}
     )
@@ -104,13 +104,13 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
             ".*_knee_link",
             "torso_link",
             "pelvis",
-            ".*_shoulder_pitch_link",
-            ".*_shoulder_roll_link",
-            ".*_shoulder_yaw_link",
-            ".*_elbow_link",
-            ".*_wrist_yaw_link",
-            ".*_wrist_roll_link",
-            ".*_wrist_pitch_link",
+            # ".*_shoulder_pitch_link",
+            # ".*_shoulder_roll_link",
+            # ".*_shoulder_yaw_link",
+            # ".*_elbow_link",
+            # ".*_wrist_yaw_link",
+            # ".*_wrist_roll_link",
+            # ".*_wrist_pitch_link",
         ]
 
         # Rewards
