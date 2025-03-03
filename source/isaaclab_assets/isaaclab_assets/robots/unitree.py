@@ -318,7 +318,7 @@ H1v2_CFG = ArticulationCfg(
                 ".*_hip_roll_joint": 70.0, #150
                 ".*_hip_pitch_joint": 50.0, #200
                 ".*_knee_joint": 150.0, #200 
-                "torso_joint": 42.55.0, #200
+                "torso_joint": 42.55, #200
             },
             damping={
                 ".*_hip_yaw_joint": 12.0, # all 5.0
