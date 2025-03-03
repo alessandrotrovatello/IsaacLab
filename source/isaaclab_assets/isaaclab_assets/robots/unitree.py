@@ -355,13 +355,13 @@ H1v2_CFG = ArticulationCfg(
                 ".*_wrist_pitch_joint": 50.0,
             },
             damping={
-                ".*_shoulder_pitch_joint": 0.5, # all 10.0
-                ".*_shoulder_roll_joint": 0.5,
-                ".*_shoulder_yaw_joint": 0.5,
-                ".*_elbow_joint": 0.5,
-                ".*_wrist_yaw_joint": 0.5,
-                ".*_wrist_roll_joint": 0.5,
-                ".*_wrist_pitch_joint": 0.5,
+                ".*_shoulder_pitch_joint": 10.0, # all 10.0
+                ".*_shoulder_roll_joint": 10.0,
+                ".*_shoulder_yaw_joint": 10.0,
+                ".*_elbow_joint": 10.0,
+                ".*_wrist_yaw_joint": 10.0,
+                ".*_wrist_roll_joint": 10.0,
+                ".*_wrist_pitch_joint": 10.0,
             },
         ),
     },
