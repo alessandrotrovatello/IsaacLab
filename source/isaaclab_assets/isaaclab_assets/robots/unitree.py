@@ -346,22 +346,22 @@ H1v2_CFG = ArticulationCfg(
             effort_limit=300,
             velocity_limit=100.0,
             stiffness={
-                ".*_shoulder_pitch_joint": 100.0, # all 40.0
-                ".*_shoulder_roll_joint": 100.0,
-                ".*_shoulder_yaw_joint": 100.0,
-                ".*_elbow_joint": 100.0,
-                ".*_wrist_yaw_joint": 100.0,
-                ".*_wrist_roll_joint": 100.0,
-                ".*_wrist_pitch_joint": 100.0,
+                ".*_shoulder_pitch_joint": 1000.0, # all 40.0
+                ".*_shoulder_roll_joint": 1000.0,
+                ".*_shoulder_yaw_joint": 1000.0,
+                ".*_elbow_joint": 1000.0,
+                ".*_wrist_yaw_joint": 1000.0,
+                ".*_wrist_roll_joint": 1000.0,
+                ".*_wrist_pitch_joint": 1000.0,
             },
             damping={
-                ".*_shoulder_pitch_joint": 20.0, # all 10.0
-                ".*_shoulder_roll_joint": 20.0,
-                ".*_shoulder_yaw_joint": 20.0,
-                ".*_elbow_joint": 20.0,
-                ".*_wrist_yaw_joint": 20.0,
-                ".*_wrist_roll_joint": 20.0,
-                ".*_wrist_pitch_joint": 20.0,
+                ".*_shoulder_pitch_joint": 200.0, # all 10.0
+                ".*_shoulder_roll_joint": 200.0,
+                ".*_shoulder_yaw_joint": 200.0,
+                ".*_elbow_joint": 200.0,
+                ".*_wrist_yaw_joint": 200.0,
+                ".*_wrist_roll_joint": 200.0,
+                ".*_wrist_pitch_joint": 200.0,
             },
         ),
     },
