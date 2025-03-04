@@ -36,7 +36,7 @@ class H1v2Rewards(RewardsCfg):
         params={
             "command_name": "base_velocity",
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
-            "threshold": 0.2,
+            "threshold": 0.05, #4
         },
     )
     feet_slide = RewTerm(
