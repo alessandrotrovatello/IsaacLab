@@ -39,12 +39,21 @@ class H1v2Rewards(RewardsCfg):
     #         "threshold": 4.0, #4
     #     },
     # )
-    feet_air_time = RewTerm(
+    feet_air_time_right = RewTerm(
         func=mdp.feet_air_time_positive_biped,
         weight=0.25, #0.25
         params={
             "command_name": "base_velocity",
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names="right_ankle_roll_link"),
+            "threshold": 4.0, #4
+        },
+    )
+    feet_air_time_left = RewTerm(
+        func=mdp.feet_air_time_positive_biped,
+        weight=0.25, #0.25
+        params={
+            "command_name": "base_velocity",
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names="left_ankle_roll_link"),
             "threshold": 4.0, #4
         },
     )
