@@ -28,33 +28,17 @@ class H1v2Rewards(RewardsCfg):
         params={"command_name": "base_velocity", "std": 0.5},
     )
     track_ang_vel_z_exp = RewTerm(
-        func=mdp.track_ang_vel_z_world_exp, weight=1.0, params={"command_name": "base_velocity", "std": 0.5}
+        func=mdp.track_ang_vel_z_world_exp,
+        weight=1.0,
+        params={"command_name": "base_velocity", "std": 0.5}
     )
-    # feet_air_time = RewTerm(
-    #     func=mdp.feet_air_time_positive_biped,
-    #     weight=0.25, #0.25
-    #     params={
-    #         "command_name": "base_velocity",
-    #         "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
-    #         "threshold": 4.0, #4
-    #     },
-    # )
-    feet_air_time_right = RewTerm(
+    feet_air_time = RewTerm(
         func=mdp.feet_air_time_positive_biped,
         weight=0.25, #0.25
         params={
             "command_name": "base_velocity",
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names="right_ankle_roll_link"),
-            "threshold": 4.0, #4
-        },
-    )
-    feet_air_time_left = RewTerm(
-        func=mdp.feet_air_time_positive_biped,
-        weight=0.25, #0.25
-        params={
-            "command_name": "base_velocity",
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names="left_ankle_roll_link"),
-            "threshold": 4.0, #4
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
+            "threshold": 1.0, #4
         },
     )
     feet_slide = RewTerm(
