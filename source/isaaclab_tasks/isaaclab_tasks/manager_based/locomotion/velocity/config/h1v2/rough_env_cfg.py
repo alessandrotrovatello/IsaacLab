@@ -20,7 +20,7 @@ from isaaclab_assets import H1v2_MINIMAL_CFG  # isort: skip
 class H1v2Rewards(RewardsCfg):
     """Reward terms for the MDP."""
 
-    termination_penalty = RewTerm(func=mdp.is_terminated, weight=-300.0)
+    termination_penalty = RewTerm(func=mdp.is_terminated, weight=-200.0)
     lin_vel_z_l2 = None
     track_lin_vel_xy_exp = RewTerm(
         func=mdp.track_lin_vel_xy_yaw_frame_exp,
@@ -38,12 +38,12 @@ class H1v2Rewards(RewardsCfg):
         params={
             "command_name": "base_velocity",
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
-            "threshold": 0.5, #4
+            "threshold": 0.4, #4
         },
     )
     feet_slide = RewTerm(
         func=mdp.feet_slide,
-        weight=-0.3, #-0.25
+        weight=-0.25, #-0.25
         params={
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
             "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_roll_link"),
@@ -51,7 +51,7 @@ class H1v2Rewards(RewardsCfg):
     )
     # Penalize ankle joint limits
     dof_pos_limits = RewTerm(
-        func=mdp.joint_pos_limits, weight=-1.0, params={"asset_cfg": SceneEntityCfg("robot", joint_names=".*_ankle_roll_joint")}
+        func=mdp.joint_pos_limits, weight=-1.0, params={"asset_cfg": SceneEntityCfg("robot", joint_names=".*_ankle_.*_joint")} # ".*_ankle_roll_joint"
     )
     # Penalize deviation from default of the joints that are not essential for locomotion
     joint_deviation_hip = RewTerm(
@@ -119,7 +119,7 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.rewards.undesired_contacts = None #None
         self.rewards.flat_orientation_l2.weight = -1.0 #-1.0
         self.rewards.dof_torques_l2.weight = 0.0 #0.0 
-        self.rewards.action_rate_l2.weight = -0.005 #-0.005
+        self.rewards.action_rate_l2.weight = -0.01 #-0.005
         self.rewards.dof_acc_l2.weight = -1.25e-7 #-1.25e-7
 
         # Commands
