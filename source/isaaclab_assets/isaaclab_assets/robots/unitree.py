@@ -314,16 +314,16 @@ H1v2_CFG = ArticulationCfg(
             effort_limit=220,
             velocity_limit=100.0,
             stiffness={
-                ".*_hip_yaw_joint": 200.0, #150
-                ".*_hip_roll_joint": 200.0, #150
+                ".*_hip_yaw_joint": 150.0, #150
+                ".*_hip_roll_joint": 150.0, #150
                 ".*_hip_pitch_joint": 200.0, #200
                 "torso_joint": 200.0, #200
             },
             damping={
-                ".*_hip_yaw_joint": 20.0, # all 5.0
-                ".*_hip_roll_joint": 20.0,
-                ".*_hip_pitch_joint": 20.0,
-                "torso_joint": 20.0,
+                ".*_hip_yaw_joint": 5.0, # all 5.0
+                ".*_hip_roll_joint": 5.0,
+                ".*_hip_pitch_joint": 5.0,
+                "torso_joint": 5.0,
             },
         ),
         "knees": ImplicitActuatorCfg(
@@ -331,10 +331,10 @@ H1v2_CFG = ArticulationCfg(
             effort_limit=360,
             velocity_limit=100.0,
             stiffness={
-                ".*_knee_joint": 150.0, #200 
+                ".*_knee_joint": 200.0, #200 
             },
             damping={
-                ".*_knee_joint": 15.0,
+                ".*_knee_joint": 5.0,
             },
         ),
         "feet": ImplicitActuatorCfg(
@@ -342,12 +342,12 @@ H1v2_CFG = ArticulationCfg(
             effort_limit=45,
             velocity_limit=100.0,
             stiffness={
-                ".*_ankle_pitch_joint": 40.0, # all 20.0
-                ".*_ankle_roll_joint": 40.0,
+                ".*_ankle_pitch_joint": 20.0, # all 20.0
+                ".*_ankle_roll_joint": 20.0,
             },
             damping={
-                ".*_ankle_pitch_joint": 5.0, # all 4.0
-                ".*_ankle_roll_joint": 5.0, 
+                ".*_ankle_pitch_joint": 4.0, # all 4.0
+                ".*_ankle_roll_joint": 4.0, 
             },
         ),
         "arms": ImplicitActuatorCfg(
@@ -357,20 +357,20 @@ H1v2_CFG = ArticulationCfg(
             stiffness={
                 ".*_shoulder_pitch_joint": 40.0, # all 40.0
                 ".*_shoulder_roll_joint": 40.0,
-                ".*_shoulder_yaw_joint": 20.0,
-                ".*_elbow_joint": 20.0,
-                ".*_wrist_yaw_joint": 20.0,
-                ".*_wrist_roll_joint": 20.0,
-                ".*_wrist_pitch_joint": 20.0,
+                ".*_shoulder_yaw_joint": 40.0,
+                ".*_elbow_joint": 40.0,
+                ".*_wrist_yaw_joint": 40.0,
+                ".*_wrist_roll_joint": 40.0,
+                ".*_wrist_pitch_joint": 40.0,
             },
             damping={
                 ".*_shoulder_pitch_joint": 10.0, # all 10.0
                 ".*_shoulder_roll_joint": 10.0,
-                ".*_shoulder_yaw_joint": 5.0,
-                ".*_elbow_joint": 5.0,
-                ".*_wrist_yaw_joint": 5.0,
+                ".*_shoulder_yaw_joint": 10.0,
+                ".*_elbow_joint": 10.0,
+                ".*_wrist_yaw_joint": 10.0,
                 ".*_wrist_roll_joint": 10.0,
-                ".*_wrist_pitch_joint": 20.0,
+                ".*_wrist_pitch_joint": 10.0,
             },
         ),
     },
