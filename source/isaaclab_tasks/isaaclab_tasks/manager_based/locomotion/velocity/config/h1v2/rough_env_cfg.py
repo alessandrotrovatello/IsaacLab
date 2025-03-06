@@ -43,7 +43,7 @@ class H1v2Rewards(RewardsCfg):
     )
     feet_slide = RewTerm(
         func=mdp.feet_slide,
-        weight=-0.25, #-0.25
+        weight=-0.15, #-0.25
         params={
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_roll_link"),
             "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_roll_link"),
@@ -119,7 +119,7 @@ class H1v2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.rewards.undesired_contacts = None #None
         self.rewards.flat_orientation_l2.weight = -1.0 #-1.0
         self.rewards.dof_torques_l2.weight = 0.0 #0.0 
-        self.rewards.action_rate_l2.weight = -0.01 #-0.005
+        self.rewards.action_rate_l2.weight = -0.005 #-0.005
         self.rewards.dof_acc_l2.weight = -1.25e-7 #-1.25e-7
 
         # Commands
