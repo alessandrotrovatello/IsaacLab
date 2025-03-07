@@ -291,15 +291,15 @@ H1v2_CFG = ArticulationCfg(
         joint_pos={
             ".*_hip_yaw_joint": 0.0,
             ".*_hip_roll_joint": 0.0,
-            ".*_hip_pitch_joint": -0.28,  # -16 degrees
-            ".*_knee_joint": 0.79,  # 45 degrees
-            ".*_ankle_pitch_joint": -0.52,  # -30 degrees
+            ".*_hip_pitch_joint": 0.0,  # -0.28 , -16 degrees
+            ".*_knee_joint": 0.0,  # 0.79 , 45 degrees
+            ".*_ankle_pitch_joint": 0.0,  # -0.52 , -30 degrees
             ".*_ankle_roll_joint": 0.0,
             "torso_joint": 0.0,
-            ".*_shoulder_pitch_joint": 0.28,
+            ".*_shoulder_pitch_joint": 0.0, # 0.28
             ".*_shoulder_roll_joint": 0.0,
             ".*_shoulder_yaw_joint": 0.0,
-            ".*_elbow_joint": 0.52,
+            ".*_elbow_joint": 0.0, # 0.52
             ".*_wrist_yaw_joint": 0.0,
             ".*_wrist_roll_joint": 0.0,
             ".*_wrist_pitch_joint": 0.0,
